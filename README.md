@@ -49,5 +49,24 @@
     * 使用者透過網路存取資料, 這些資料可能分別來自不同的主機, 如此分擔了一台主機的工作, 執行起來效能會更佳
 
 
+## NoSQL (Not Only SQL)
+* Key-Value資料庫
+  * 特性：是NoSQL資料庫中最大宗的類型，具有水平擴充性、能依需求增加資料庫
+  * 用途：用於儲存 TB 或 PB 等級資料
+  * 產品：Google BigTable、Hadoop HBase、Amazon Dynamo、Cassandra、Hypertable
+* 記憶體資料庫 (In-memory Database)
+  * 特性：利用記憶體建立分散式資料庫，加快讀取資料的速度
+  * 用途：用來快取常用網頁，減少讀取硬碟的次數，不過系統關機後就無法保存
+  * 產品：Memcached、Redis
+* 文件資料庫 (Document Database)
+  * 特性：可儲存結構鬆散或非結構性的資料就是HTML網頁
+  * 用途：用來儲存非結構性的文件
+  * 產品：CouchDB、MongoDB、Riak
+* 圖學資料庫 (Graph Database)
+  * 特性：圖學資料包括了節點 (Node)、關係 (Relation)和屬性 (Property)三種結構
+  * 用途：運用圖學架構來儲存節點間關係資料架構，例如用樹狀結構來組織從屬關係或網狀結構來儲存朋友關係，地理圖資系統通常也會用圖學資料庫來儲存地圖上每一點和鄰近點的關係，或用圖學資料庫來計算點與點之間最短的距離，也可以用同樣的概念來計算出人與人之間最短的交友距離
+  * 產品：Neo4j、InfoGrid、AllegroGrph
+
+
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
