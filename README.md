@@ -68,5 +68,18 @@
   * 產品：Neo4j、InfoGrid、AllegroGrph
 
 
+## 資料庫正規化
+* 【目的】提高關聯性資料庫的效能
+   1.降低資料重複性(Data Redundancy) (Data Redundancy)。
+   2.避免資料更新異常(Anomalies)
+* 將原先關聯 (表格) 的所有資訊，在「分解」之後，仍能由數個新關聯 (表格) 中經過「合併」得到相同的資訊。即所謂的「無損失分解
+(Lossless decomposition) (Lossless decomposition)」的觀念
+* 如果符合第一條規則，則資料庫就稱為「第一正規化形式 (1NF)」。如果符合前二條規則，則資料庫就被視為屬於「第二正規化形式(2NF)」。雖然資料庫的正規化最多可以進行到第五正規化形式，但是在實務上，BCNF被視為大部分應用程式所需的最高階正規形式
+* 補圖
+
+
+
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
+* [NoSQL資料庫](https://www.ithome.com.tw/news/92507)
+* [資料庫正規化](http://cc.cust.edu.tw/~ccchen/doc/db_04.pdf)
