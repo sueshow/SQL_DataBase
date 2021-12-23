@@ -73,11 +73,11 @@
 
 
 ## 資料庫正規化
-* 【目的】提高關聯性資料庫的效能
+* 目的：提高關聯性資料庫的效能
   * 降低資料重複性(Data Redundancy) (Data Redundancy)。
   * 避免資料更新異常(Anomalies)
 * 將原先關聯 (表格) 的所有資訊，在「分解」之後，仍能由數個新關聯 (表格) 中經過「合併」得到相同的資訊。即所謂的「無損失分解
-(Lossless decomposition) (Lossless decomposition)」的觀念
+(Lossless decomposition)」的觀念
   * 符合第一條規則，資料庫就稱為「第一正規化形式 (1NF)」
     * 每一個欄位只能有一個基元值 (Atomic) 即單一值
     * 沒有任何兩筆以上的資料是完全重覆
