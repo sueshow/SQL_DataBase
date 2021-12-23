@@ -104,6 +104,18 @@
 
 
 
+## SQL
+* 類型：
+  * Transact-SQL (又稱T-SQL)
+    * 是在 Microsoft SQL Server 和 Sybase SQL Server 上的 ANSI SQL 實作
+  * PL/SQL (Procedural Language/SQL)
+    * 是甲骨文公司專有的 SQL 擴展語言
+* 名詞：
+  * DDL (Data Definition Language)：對資料庫物件 (如資料表，預存程序，函式或自訂型別等) 的新增，修改和刪除都使用此語法
+  * DML (Data Manipulation Language)：又稱 CRUD (Create/Retrieve/Update/Delete) 功能，意指資料的新增／擷取／修改／刪除四個功能
+  * DCL (Data Control Language)：由資料庫所提供的保安功能，對於資料庫與資料庫物件的存取原則與權限，都由 DCL 定義之
+
+
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
 * [NoSQL資料庫](https://www.ithome.com.tw/news/92507)
