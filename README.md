@@ -49,7 +49,7 @@
   * 分散式架構
     * 利用數台資料庫伺服器來分別處理使用者的連線
     * 使用者透過網路存取資料, 這些資料可能分別來自不同的主機, 如此分擔了一台主機的工作, 執行起來效能會更佳
-
+<br>
 
 
 ## NoSQL (Not Only SQL)
@@ -69,7 +69,7 @@
   * 特性：資料包括節點 (Node)、關係 (Relation)和屬性 (Property)三種結構，來儲存圖學架構
   * 用途：運用圖學架構來儲存節點間關係資料架構，例如用樹狀結構來組織從屬關係或網狀結構來儲存朋友關係，地理圖資系統通常也會用圖學資料庫來儲存地圖上每一點和鄰近點的關係，或用圖學資料庫來計算點與點之間最短的距離，也可以用同樣的概念來計算出人與人之間最短的交友距離
   * 產品：Neo4j、InfoGrid、AllegroGrph
-
+<br>
 
 
 ## 資料庫正規化
@@ -101,7 +101,7 @@
         * 符合3NF 的格式。
         * 「主鍵」中的各欄位不可以相依於其他非主鍵的欄位
 * 補圖
-
+<br>
 
 
 ## SQL
@@ -114,7 +114,7 @@
   * DDL (Data Definition Language)：對資料庫物件 (如資料表，預存程序，函式或自訂型別等) 的新增、修改和刪除 (Create、Alter、Drop) 都使用此語法
   * DML (Data Manipulation Language)：又稱 CRUD (Create/Retrieve/Update/Delete) 功能，意指資料的新增、擷取、修改、刪除 (Select、Insert、Delete、Update) 四個功能
   * DCL (Data Control Language)：由資料庫所提供的保安功能，對於資料庫與資料庫物件的存取原則與權限 (Grant、Deny、Revoke)，都由 DCL 定義之
-
+<br>
 
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
