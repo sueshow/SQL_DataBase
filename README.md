@@ -108,7 +108,7 @@
 * 類型：
   * Transact-SQL (又稱T-SQL)
     * 是在 Microsoft SQL Server 和 Sybase SQL Server 上的 ANSI SQL 實作
-  * PL/SQL (Procedural Language/SQL)
+  * PL-SQL (Procedural Language-SQL)
     * 是甲骨文公司專有的 SQL 擴展語言
 * 名詞：
   * DDL (Data Definition Language)：對資料庫物件 (如資料表，預存程序，函式或自訂型別等) 的新增、修改和刪除 (Create、Alter、Drop) 都使用此語法
