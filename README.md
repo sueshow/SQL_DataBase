@@ -121,3 +121,4 @@
 * [NoSQL資料庫](https://www.ithome.com.tw/news/92507)
 * [資料庫正規化](http://cc.cust.edu.tw/~ccchen/doc/db_04.pdf)
 * [第十章 資料庫邏輯設計](http://www.tsnien.idv.tw/DataBase_WebBook/chap10/10-5%20%E6%AD%A3%E8%A6%8F%E5%8C%96%E6%AD%A5%E9%A9%9F.html)
+* [Transact SQL Transact SQL 語法介紹](https://www.taisugar.com.tw/Upload/UserFiles/ServicePlace/133/633924063523432100.pdf)
