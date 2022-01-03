@@ -191,9 +191,51 @@
 </table>
 <br>
 
+
+## MySQL Server 安裝與配置
+* 安裝：確認安裝 MySQL Server 與 ODBC 連接器的支援版本
+  * 從 https://dev.mysql.com/downloads/installer/ 下載 MySQL 8 Windows Installer，並執行它
+  * 在設定安裝期間，依序選取【自訂】和【MySQL伺服器】，以及要安裝的【連接器/ODBC】。確定 ODBC 連接器符合已安裝 MySQL Server (x86 或 x64) 的位元
+  * 完成 MySQL Server 的安裝
+* 配置
+  * 在文字編輯器中開啟下列檔案：C:\ProgramData\MySQL\MySQL Server 8.0\my.ini
+  * 尋找並編輯下列配置，或將它附加至 my.ini 檔案的【mysqld】區段：
+    ```
+    max_allowed_packet=33M
+    ```
+    * 針對 MySQL 8，必須設定下列變數：
+      ```
+      log_bin_trust_function_creators=1
+      --或停用二進位記錄
+      log_bin=0
+      ```
+    * 若為 MySQL 5.6.20 與 5.6.21 (可以使用 mysql --version 判斷 MySQL 版本)：
+      * innodb_log_file_size 必須設定為至少 200 MB，但不超過 3000 MB
+        ```
+        innodb_log_file_size=200M
+        ```
+    * 若為 MySQL 5.6.22 和支援的更新版本 (包括第 8 版)：
+      * innodb_log_file_size*innodb_log_files_in_group 必須設定至少為 200 MB，其中 innodb_log_files_in_group 的最小值為 2，最大值為 100，且值必須為整數
+        ```
+        innodb_log_file_size=100M
+        innodb_log_files_in_group=2
+        ```
+  * 儲存並關閉 my.ini 檔案
+  * 開啟命令提示字元，然後輸入下列命令，以重新啟動 MySQL 伺服器並套用配置 (處理程序名稱視 MySQL 的版本而定，如 8.0 = mysql80 等)
+    ```
+    net stop mysql80
+    net start mysql80
+    ```
+  * 在命令提示字元中輸入下列命令，檢查 MySQL 伺服器是否正在執行中：
+    ```
+    sc query mysql80
+    ```
+<br>
+
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
 * [NoSQL資料庫](https://www.ithome.com.tw/news/92507)
 * [資料庫正規化](http://cc.cust.edu.tw/~ccchen/doc/db_04.pdf)
 * [第十章 資料庫邏輯設計](http://www.tsnien.idv.tw/DataBase_WebBook/chap10/10-5%20%E6%AD%A3%E8%A6%8F%E5%8C%96%E6%AD%A5%E9%A9%9F.html)
 * [Transact SQL Transact SQL 語法介紹](https://www.taisugar.com.tw/Upload/UserFiles/ServicePlace/133/633924063523432100.pdf)
+* [MySQL Server 安裝與配置](https://help.eset.com/esmc_install/72/zh-TW/mysql_windows.html)
