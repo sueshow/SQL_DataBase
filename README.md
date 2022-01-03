@@ -114,6 +114,37 @@
   * DDL (Data Definition Language)：對資料庫物件 (如資料表，預存程序，函式或自訂型別等) 的新增、修改和刪除 (Create、Alter、Drop) 都使用此語法
   * DML (Data Manipulation Language)：又稱 CRUD (Create/Retrieve/Update/Delete) 功能，意指資料的新增、擷取、修改、刪除 (Select、Insert、Delete、Update) 四個功能
   * DCL (Data Control Language)：由資料庫所提供的保安功能，對於資料庫與資料庫物件的存取原則與權限 (Grant、Deny、Revoke)，都由 DCL 定義之
+* 函式：
+<table border="1" width="65%">
+    <tr>
+        <th width="20%">函式</a>
+        <th width="10%">描述</a>
+    </tr>
+    <tr>
+        <td> AVG </td>
+        <td> 平均值 </td>
+    </tr>
+    <tr>
+        <td> COUNT </td>
+        <td> 計數 (不含Null) </td>
+    </tr>
+    <tr>
+        <td> FIRST </td>
+        <td> 第一個記錄的值 </td>
+    </tr>
+    <tr>
+        <td> MAX </td>
+        <td> 最大值 </td>
+    </tr>
+    <tr>
+        <td> MIN </td>
+        <td> 最小值 </td>
+    </tr>
+    <tr>
+        <td> STDEV </td>
+        <td> 樣本標準差 </td>
+    </tr>
+</table>
 <br>
 
 ## 參考資料
