@@ -195,6 +195,9 @@
 ## MySQL Server 安裝與配置
 * 安裝：確認安裝 MySQL Server 與 ODBC 連接器的支援版本
   * 從 https://dev.mysql.com/downloads/installer/ 下載 MySQL 8 Windows Installer，並執行它
+    * 選擇作業系統
+    * 進入下載頁面：注意這裡有分成 web 版跟一般版，選擇一般版即可，不用註冊也可以。選擇後，便會開始下載
+    * 一直選擇下一項即可，預設的安裝通常都是最輕量化、最沒有額外套件的。唯一重要：一定要把 Root 的密碼設定好
   * 在設定安裝期間，依序選取【自訂】和【MySQL伺服器】，以及要安裝的【連接器/ODBC】。確定 ODBC 連接器符合已安裝 MySQL Server (x86 或 x64) 的位元
   * 完成 MySQL Server 的安裝
 * 配置
@@ -239,3 +242,5 @@
 * [第十章 資料庫邏輯設計](http://www.tsnien.idv.tw/DataBase_WebBook/chap10/10-5%20%E6%AD%A3%E8%A6%8F%E5%8C%96%E6%AD%A5%E9%A9%9F.html)
 * [Transact SQL Transact SQL 語法介紹](https://www.taisugar.com.tw/Upload/UserFiles/ServicePlace/133/633924063523432100.pdf)
 * [MySQL Server 安裝與配置](https://help.eset.com/esmc_install/72/zh-TW/mysql_windows.html)
+* [MySQL 下載安裝步驟的心得筆記](https://clay-atlas.com/blog/2019/11/16/mysql-mysqlworkbench-tutorial-download-install-steps/)
+* [Windows 上的 MySQL 安裝教學](https://jerrynest.io/windows-mysql-installer/)
