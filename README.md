@@ -104,7 +104,7 @@
 <br>
 
 
-## SQL：Structured Query Language
+## SQL：結構化查詢語言(Structured Query Language)
 * 類型：
   * Transact-SQL (又稱T-SQL)
     * 是在 Microsoft SQL Server 和 Sybase SQL Server 上的 ANSI SQL 實作
