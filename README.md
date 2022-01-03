@@ -115,34 +115,78 @@
   * DML (Data Manipulation Language)：又稱 CRUD (Create/Retrieve/Update/Delete) 功能，意指資料的新增、擷取、修改、刪除 (Select、Insert、Delete、Update) 四個功能
   * DCL (Data Control Language)：由資料庫所提供的保安功能，對於資料庫與資料庫物件的存取原則與權限 (Grant、Deny、Revoke)，都由 DCL 定義之
 * 函式：
-<table border="1" width="65%">
+<table border="1" width="60%">
     <tr>
+        <th width="20%">函式</a>
+        <th width="10%">描述</a>
         <th width="20%">函式</a>
         <th width="10%">描述</a>
     </tr>
     <tr>
         <td> AVG </td>
         <td> 平均值 </td>
-    </tr>
-    <tr>
         <td> COUNT </td>
         <td> 計數 (不含Null) </td>
     </tr>
     <tr>
         <td> FIRST </td>
         <td> 第一個記錄的值 </td>
+        <td> SUM </td>
+        <td> 求和 </td>
     </tr>
     <tr>
         <td> MAX </td>
         <td> 最大值 </td>
-    </tr>
-    <tr>
         <td> MIN </td>
         <td> 最小值 </td>
     </tr>
     <tr>
         <td> STDEV </td>
         <td> 樣本標準差 </td>
+        <td> STDEVP </td>
+        <td> 總體標準差 </td>
+    </tr>
+    <tr>
+        <td> VAR </td>
+        <td> 樣本方差 </td>
+        <td> VARP </td>
+        <td> 總體方差 </td>
+    </tr>
+    <tr>
+        <td> UCASE </td>
+        <td> 轉化為全大寫字母 </td>
+        <td> LCASE </td>
+        <td> 轉化為全小寫字母 </td>
+    </tr>
+    <tr>
+        <td> MID </td>
+        <td> 取中值 </td>
+        <td> LEN </td>
+        <td> 計算字串長度 </td>
+    </tr>
+    <tr>
+        <td> INSTR </td>
+        <td> 獲得子字串在母字串的起始位置 </td>
+        <td> FORMAT </td>
+        <td> 字串格式化 </td>
+    </tr>
+    <tr>
+        <td> LEFT </td>
+        <td> 取字串左邊子串 </td>
+        <td> RIGHT </td>
+        <td> 取字串右邊子串 </td>   
+    </tr>
+    <tr>
+        <td> ROUND </td>
+        <td> 數值四捨五入取整 </td>
+        <td> MOD </td>
+        <td> 取餘 </td>   
+    </tr>
+    <tr>
+        <td> NOW </td>
+        <td> 獲得當前時間的值 </td>
+        <td> DATEDIFF </td>
+        <td> 獲得兩個時間的差值 </td>   
     </tr>
 </table>
 <br>
