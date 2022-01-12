@@ -217,64 +217,62 @@
           <td> 定長，字元數沒有達到最大值則使用空白填充，CHAR的效能會比VARCHAR快 </td>
         </tr>
         <tr>
-          <td> FIRST </td>
-          <td> 第一個記錄的值 </td>
-          <td> SUM </td>
-          <td> 求和 </td>
+          <td> varchar </td>
+          <td> 2個位元組 </td>
+          <td> 3個位元組 </td>
+          <td> 3個位元組 <br> 
+               但設置varchar(n)：無論存字母、數字、其它符號、中文字，長度最大為n個 </td>
+          <td> 2個位元組 </td>
+          <td> 變長，字元最大數有限制， VARCHAR比CHAR節省空間 </td>
         </tr>
         <tr>
-          <td> MAX </td>
-          <td> 最大值 </td>
-          <td> MIN </td>
-          <td> 最小值 </td>
+          <td> varchar2 </td>
+          <td>  </td>
+          <td> 3個位元組 <br>
+               VARCHAR2(byte/char) </td>
+          <td> --- </td>
+          <td>  </td>
+          <td> 變長，把空白轉為NULL值，當資料經常需要修改成不同長度時，VARCHAR2會做成遷移(ROW MIGRATION)引起不必要的I/O </td>
         </tr>
         <tr>
-          <td> STDEV </td>
-          <td> 樣本標準差 </td>
-          <td> STDEVP </td>
-          <td> 總體標準差 </td>
+          <td> text </td>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td> 變長，無長度限制 </td>
         </tr>
         <tr>
-          <td> VAR </td>
-          <td> 樣本方差 </td>
-          <td> VARP </td>
-          <td> 總體方差 </td>
+          <td> nchar </td>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td> 定長，專為unicode而設計，2個位元組存放一個字元(不管字元或漢字) </td>
         </tr>
         <tr>
-          <td> UCASE </td>
-          <td> 轉化為全大寫字母 </td>
-          <td> LCASE </td>
-          <td> 轉化為全小寫字母 </td>
+          <td> nvarchar </td>
+          <td> 1個字元數 </td>
+          <td> --- </td>
+          <td>  </td>
+          <td>  </td>
+          <td> 變長，專為unicode而設計，長度定義的是字元數，2個位元組存放一個字元(不管字元或漢字) </td>
         </tr>
         <tr>
-          <td> MID </td>
-          <td> 取中值 </td>
-          <td> LEN </td>
-          <td> 計算字串長度 </td>
+          <td> nvarchar2 </td>
+          <td> --- </td>
+          <td> 2個位元組 </td>
+          <td>  </td>
+          <td>  </td>
+          <td> 變長，專為unicode而設計，長度定義的是字元數 </td>
         </tr>
         <tr>
-          <td> INSTR </td>
-          <td> 獲得子字串在母字串的起始位置 </td>
-          <td> FORMAT </td>
-          <td> 字串格式化 </td>
-        </tr>
-        <tr>
-          <td> LEFT </td>
-          <td> 取字串左邊子串 </td>
-          <td> RIGHT </td>
-          <td> 取字串右邊子串 </td>   
-        </tr>
-        <tr>
-          <td> ROUND </td>
-          <td> 數值四捨五入取整 </td>
-          <td> MOD </td>
-          <td> 取餘 </td>   
-        </tr>
-        <tr>
-          <td> NOW </td>
-          <td> 獲得當前時間的值 </td>
-          <td> DATEDIFF </td>
-          <td> 獲得兩個時間的差值 </td>   
+          <td> ntext </td>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td> 變長 </td>
         </tr>
       </table>
   * 一個中文字的儲存位元
