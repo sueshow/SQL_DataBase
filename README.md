@@ -198,14 +198,14 @@
     * GBK編碼：雙位元組，換句話說：1個中文字相當於2個字元
     * UFT-8編碼：中文使用24位(三個位元組)來編碼，換句話說：1個中文字相當於3個字元
     * Big5編碼：1個中文字相當於2個字元
-      <table border="1" width="60%">
+      <table border="1" width="50%">
         <tr>
-          <th width="10%">型態</a>
-          <th width="10%">MSSQL</a>
-          <th width="10%">Oracle</a>
-          <th width="10%">Postgresql</a>
-          <th width="10%">MySQL</a>
-          <th width="10%">備註</a>
+          <th width="5%">型態</a>
+          <th width="5%">MSSQL</a>
+          <th width="5%">Oracle</a>
+          <th width="5%">Postgresql</a>
+          <th width="5%">MySQL</a>
+          <th width="25%">備註</a>
         </tr>
         <tr>
           <td> char </td>
