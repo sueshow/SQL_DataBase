@@ -192,6 +192,134 @@
 <br>
 
 
+## DataBase 說明
+* 中文字
+  * 編碼
+    * GBK編碼：雙位元組，換句話說：1個中文字相當於2個字元
+    * UFT-8編碼：中文使用24位(三個位元組)來編碼，換句話說：1個中文字相當於3個字元
+    * Big5編碼：1個中文字相當於2個字元
+      <table border="1" width="60%">
+        <tr>
+          <th width="10%">型態</a>
+          <th width="10%">MSSQL</a>
+          <th width="10%">Oracle</a>
+          <th width="10%">Postgresql</a>
+          <th width="10%">MySQL</a>
+          <th width="10%">備註</a>
+        </tr>
+        <tr>
+          <td> char </td>
+          <td>  </td>
+          <td> 3個位元組 <br>
+               CHAR(byte/char) </td>
+          <td> 3個位元組 </td>
+          <td>  </td>
+          <td> 定長，字元數沒有達到最大值則使用空白填充，CHAR的效能會比VARCHAR快 </td>
+        </tr>
+        <tr>
+          <td> FIRST </td>
+          <td> 第一個記錄的值 </td>
+          <td> SUM </td>
+          <td> 求和 </td>
+        </tr>
+        <tr>
+          <td> MAX </td>
+          <td> 最大值 </td>
+          <td> MIN </td>
+          <td> 最小值 </td>
+        </tr>
+        <tr>
+          <td> STDEV </td>
+          <td> 樣本標準差 </td>
+          <td> STDEVP </td>
+          <td> 總體標準差 </td>
+        </tr>
+        <tr>
+          <td> VAR </td>
+          <td> 樣本方差 </td>
+          <td> VARP </td>
+          <td> 總體方差 </td>
+        </tr>
+        <tr>
+          <td> UCASE </td>
+          <td> 轉化為全大寫字母 </td>
+          <td> LCASE </td>
+          <td> 轉化為全小寫字母 </td>
+        </tr>
+        <tr>
+          <td> MID </td>
+          <td> 取中值 </td>
+          <td> LEN </td>
+          <td> 計算字串長度 </td>
+        </tr>
+        <tr>
+          <td> INSTR </td>
+          <td> 獲得子字串在母字串的起始位置 </td>
+          <td> FORMAT </td>
+          <td> 字串格式化 </td>
+        </tr>
+        <tr>
+          <td> LEFT </td>
+          <td> 取字串左邊子串 </td>
+          <td> RIGHT </td>
+          <td> 取字串右邊子串 </td>   
+        </tr>
+        <tr>
+          <td> ROUND </td>
+          <td> 數值四捨五入取整 </td>
+          <td> MOD </td>
+          <td> 取餘 </td>   
+        </tr>
+        <tr>
+          <td> NOW </td>
+          <td> 獲得當前時間的值 </td>
+          <td> DATEDIFF </td>
+          <td> 獲得兩個時間的差值 </td>   
+        </tr>
+      </table>
+  * 一個中文字的儲存位元
+* 英文字母/數字：相當於1位元組
+* 目前使用的 DataBase 
+  * Oracle為「TRADITIONAL CHINESE_TAIWAN.AL32UTF8」，故中文字相當於3個字元
+    * 語法：select userenv('language') from dual;
+  * SQL Server(目標系統)為簡體中文GBK
+    * 語法：select COLLATIONPROPERTY('Chinese_PRC_Stroke_CI_AI_KS_WS','CodePage')
+    * 結果
+      <table border="1" width="40%">
+        <tr>
+          <th width="10%">代碼</a>
+          <th width="10%">語言</a>
+          <th width="10%">代碼</a>
+          <th width="10%">語言</a>
+        </tr>
+        <tr>
+          <td> 936 </td>
+          <td> 簡體中文GBK </td>
+          <td> 950 </td>
+          <td> 繁體中文BIG5 </td>
+        </tr>
+        <tr>
+          <td> 437 </td>
+          <td> 美國/加拿大英語 </td>
+          <td> 932 </td>
+          <td> 日文 </td>
+        </tr>
+        <tr>
+          <td> 932 </td>
+          <td> 日文 </td>
+          <td> 949 </td>
+          <td> 韓文 </td>
+        </tr>
+        <tr>
+          <td> 866 </td>
+          <td> 俄文 </td>
+          <td> 65001 </td>
+          <td> unicode UFT-8 </td>
+        </tr>
+      </table>
+<br>
+
+
 ## MySQL Server 安裝與配置
 * 安裝：確認安裝 MySQL Server 與 ODBC 連接器的支援版本
   * 從 https://dev.mysql.com/downloads/installer/ 下載 MySQL 8 Windows Installer，並執行它
@@ -235,6 +363,7 @@
     ```
 <br>
 
+
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
 * [NoSQL資料庫](https://www.ithome.com.tw/news/92507)
@@ -244,3 +373,9 @@
 * [MySQL Server 安裝與配置](https://help.eset.com/esmc_install/72/zh-TW/mysql_windows.html)
 * [MySQL 下載安裝步驟的心得筆記](https://clay-atlas.com/blog/2019/11/16/mysql-mysqlworkbench-tutorial-download-install-steps/)
 * [Windows 上的 MySQL 安裝教學](https://jerrynest.io/windows-mysql-installer/)
+* [Oracle中文字如何計算長度](http://alexlucy99.blogspot.com/2015/03/oracle.html)
+* [檢視MySQL和SQL Server資料庫的預設編碼方法](https://www.itread01.com/p/1159234.html)
+* [★編碼問題之重要文章](https://codingnote.cc/zh-tw/p/141295/)
+* [MySQL計算字串長度及字串位元組數](https://louis176127.pixnet.net/blog/post/134867546)
+* [PostgreSQL：字元-型別及函式](https://iter01.com/563047.html)
+* [Oracle [char、nchar、varchar、varchar2、nvarchar] 資料類型的區別](http://wupeiting.blogspot.com/2010/08/oracleoracle-charncharvarcharvarchar2nv.htm)
