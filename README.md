@@ -284,6 +284,7 @@
     * 範例：常數 12.345 會轉換成有效位數 5、小數位數 3 的 numeric 值
       * Oracle：設欄位字元型別為 Number(a, b)，其中 a>b，在 insert 資料時，整數部分長度最大不能超過 a-b，小數部分長度如果大於 b，則擷取 b 長度的小數存入資料庫，其餘的會被捨棄。
       * SQL Server：
+        * numeric 和 decimal 資料類型的預設最大有效位數為 38。 在舊版的 SQL Server 中，預設的最大值是 28
         * 在將數字轉換成有效位數與小數位數較小的 decimal 或 numeric 值時會使用四捨五入。相反地，如果 SET ARITHABORT 選項是 ON，SQL Server 會在發生溢位時產生錯誤。若只是流失有效位數與小數位數還不足以產生錯誤
         * 在 SQL Server 2016 (13.x) 之前，float 值轉換至 decimal 或 numeric，就會限制為只有 17 個有效位數的值。任何小於 5E-18 (當設定使用 5E-18 科學記號標記法或 0.0000000000000000050000000000000005 十進位標記法時) 的 float 值都會捨去為 0
 * 目前使用的 DataBase 
@@ -386,3 +387,4 @@
 * [MySQL計算字串長度及字串位元組數](https://louis176127.pixnet.net/blog/post/134867546)
 * [PostgreSQL：字元-型別及函式](https://iter01.com/563047.html)
 * [Oracle [char、nchar、varchar、varchar2、nvarchar] 資料類型的區別](http://wupeiting.blogspot.com/2010/08/oracleoracle-charncharvarcharvarchar2nv.htm)
+* [Transact-SQL](https://docs.microsoft.com/zh-tw/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver15)
