@@ -276,7 +276,9 @@
         </tr>
       </table>
   * 一個中文字的儲存位元
-* 英文字母/數字：相當於1位元組
+* 英文字母：相當於1位元組
+* 數字：相當於1位元組
+  * Oracle：設欄位字元型別為 Number(a, b)，其中 a>b，在 insert 資料時，整數部分長度最大不能超過 a-b，小數部分長度如果大於 b，則擷取 b 長度的小數存入資料庫，其餘的會被捨棄。
 * 目前使用的 DataBase 
   * Oracle為「TRADITIONAL CHINESE_TAIWAN.AL32UTF8」，故中文字相當於3個字元
     * 語法：select userenv('language') from dual;
