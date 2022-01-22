@@ -388,3 +388,4 @@
 * [PostgreSQL：字元-型別及函式](https://iter01.com/563047.html)
 * [Oracle [char、nchar、varchar、varchar2、nvarchar] 資料類型的區別](http://wupeiting.blogspot.com/2010/08/oracleoracle-charncharvarcharvarchar2nv.htm)
 * [Transact-SQL](https://docs.microsoft.com/zh-tw/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver15)
+* [認識 decimal 和 numeric](http://sharedderrick.blogspot.com/2011/08/decimal-numeric.html)
