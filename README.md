@@ -278,7 +278,14 @@
   * 一個中文字的儲存位元
 * 英文字母：相當於1位元組
 * 數字：相當於1位元組
-  * Oracle：設欄位字元型別為 Number(a, b)，其中 a>b，在 insert 資料時，整數部分長度最大不能超過 a-b，小數部分長度如果大於 b，則擷取 b 長度的小數存入資料庫，其餘的會被捨棄。
+  * Transact-SQL 
+    * decimal[ ( p[ , s] ) ] 和 numeric[ ( p[ , s] ) ]：固定有效位數和小數位數的數字，其中 p 為有效位數， s 為小數位數， 0 <= s <= p
+    * 從 decimal 或 numeric 轉換成 float 或 real 可能會導致有效位數的遺失，而從 int、smallint、tinyint、float、real、money，或 smallmoney 轉換成 decimal 或 numeric 可能會導致溢位
+    * 範例：常數 12.345 會轉換成有效位數 5、小數位數 3 的 numeric 值
+      * Oracle：設欄位字元型別為 Number(a, b)，其中 a>b，在 insert 資料時，整數部分長度最大不能超過 a-b，小數部分長度如果大於 b，則擷取 b 長度的小數存入資料庫，其餘的會被捨棄。
+      * SQL Server：
+        * 在將數字轉換成有效位數與小數位數較小的 decimal 或 numeric 值時會使用四捨五入。相反地，如果 SET ARITHABORT 選項是 ON，SQL Server 會在發生溢位時產生錯誤。若只是流失有效位數與小數位數還不足以產生錯誤
+        * 在 SQL Server 2016 (13.x) 之前，float 值轉換至 decimal 或 numeric，就會限制為只有 17 個有效位數的值。任何小於 5E-18 (當設定使用 5E-18 科學記號標記法或 0.0000000000000000050000000000000005 十進位標記法時) 的 float 值都會捨去為 0
 * 目前使用的 DataBase 
   * Oracle為「TRADITIONAL CHINESE_TAIWAN.AL32UTF8」，故中文字相當於3個字元
     * 語法：select userenv('language') from dual;
