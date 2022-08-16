@@ -397,6 +397,44 @@
   * 相對於增量備份的優勢在於更短的恢復時間
 * Synthetic full backup(合成完整備份)
 * Incremental-forever backup(永久增量備份)
+<table border="1" width="25%">
+        <tr>
+          <th width="5%"> Type </a>
+          <th width="10%"> Benefit s</a>
+          <th width="10%"> Drawbacks </a>
+        </tr>
+        <tr>
+          <td> Full </td>
+          <td> ● Provides full copy of data set <br>
+               ● Offers arguably best protection </td>
+          <td> ● Time-consuming <br>
+               ● Requires lots of storage space </td>
+        </tr>
+        <tr>
+          <td> Incremental </td>
+          <td> ● Less time and storage space than full backup </td>
+          <td> ● Time-consuming to restore <br>
+               ● Need all the backups in backup chain to restore </td>
+        </tr>
+        <tr>
+          <td> Differential </td>
+          <td> ● Shorter restore time than incremental </td>
+          <td> ● Can grow to much bigger size than incremental </td>
+        </tr>
+        <tr>
+          <td> Synthetic full </td>
+          <td> ● Reduced restore time <br>
+               ● Less bandwidth usage </td>
+          <td> ● Newer, so not as well-known </td>
+        </tr>
+        <tr>
+          <td> Incremental-forever </td>
+          <td> ● Availability of data <br>
+               ● Automated restoration process </td>
+          <td> ● Newer, so not as well-known <br>
+               ● Need all the backups in backup chain to restore </td>
+        </tr>
+</table>        
 <br>
 
 
