@@ -372,6 +372,34 @@
 <br>
 
 
+## Comparing backup types
+* Full backups(完整備份)
+  * 整個數據集的完整副本，提供最好的保護
+  * 非常耗時並且通常需要大量的磁盤或磁帶容量
+  * SQL
+    * --truncate production table--
+    * --insert target table--
+* Incremental backups(增量備份)
+  * 為了提高備份速度並減少執行完整備份所需的存儲空間，僅備份自上次備份以來已更改的數據
+  * 恢復起來很耗時
+  * SQL
+    * --create temp table and insert table--
+    * --clean source data--
+    * --create temp table and insert table--
+    * --insert temp table--
+    * --create production table backup-- 
+    * --insert all production data into production backup table--
+    * --truncate production table--
+    * --insert target table--
+    * --drop temp table--
+* Differential backups(差異備份)
+  * 自上次完整備份以來更改的所有數據
+  * 相對於增量備份的優勢在於更短的恢復時間
+* Synthetic full backup(合成完整備份)
+* Incremental-forever backup(永久增量備份)
+<br>
+
+
 ## 參考資料
 * [資料庫理論與實務](http://spaces.isu.edu.tw/upload/19225/0/news/postfile_174.pdf)
 * [NoSQL資料庫](https://www.ithome.com.tw/news/92507)
@@ -389,3 +417,4 @@
 * [Oracle [char、nchar、varchar、varchar2、nvarchar] 資料類型的區別](http://wupeiting.blogspot.com/2010/08/oracleoracle-charncharvarcharvarchar2nv.htm)
 * [Transact-SQL](https://docs.microsoft.com/zh-tw/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver15)
 * [認識 decimal 和 numeric](http://sharedderrick.blogspot.com/2011/08/decimal-numeric.html)
+* [Comparing backup types](https://www.techtarget.com/searchdatabackup/tip/Data-backup-types-explained-Full-incremental-differential-and-incremental-forever-backup)
