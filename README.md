@@ -373,13 +373,13 @@
 
 
 ## Comparing backup types
-<table border="1" width="35%">
+<table border="1" width="40%">
         <tr>
           <th width="5%"> Type of backups </a>
           <th width="5%"> Describe </a>
           <th width="10%"> Benefit s</a>
           <th width="10%"> Drawbacks </a>
-          <th width="5%"> SQL </a>
+          <th width="10%"> SQL </a>
         </tr>
         <tr>
           <td> Full </td>
