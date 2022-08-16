@@ -373,66 +373,63 @@
 
 
 ## Comparing backup types
-* Full backups(完整備份)
-  * 整個數據集的完整副本，提供最好的保護
-  * 非常耗時並且通常需要大量的磁盤或磁帶容量
-  * SQL
-    * --truncate production table--
-    * --insert target table--
-* Incremental backups(增量備份)
-  * 為了提高備份速度並減少執行完整備份所需的存儲空間，僅備份自上次備份以來已更改的數據
-  * 恢復起來很耗時
-  * SQL
-    * --create temp table and insert table--
-    * --clean source data--
-    * --create temp table and insert table--
-    * --insert temp table--
-    * --create production table backup-- 
-    * --insert all production data into production backup table--
-    * --truncate production table--
-    * --insert target table--
-    * --drop temp table--
-* Differential backups(差異備份)
-  * 自上次完整備份以來更改的所有數據
-  * 相對於增量備份的優勢在於更短的恢復時間
-* Synthetic full backup(合成完整備份)
-* Incremental-forever backup(永久增量備份)
-<table border="1" width="25%">
+<table border="1" width="35%">
         <tr>
-          <th width="5%"> Type </a>
+          <th width="5%"> Type of backups </a>
+          <th width="5%"> Describe </a>
           <th width="10%"> Benefit s</a>
           <th width="10%"> Drawbacks </a>
+          <th width="5%"> SQL </a>
         </tr>
         <tr>
           <td> Full </td>
+          <td> ● 整個數據集的完整副本，提供最好的保護 </td>
           <td> ● Provides full copy of data set <br>
                ● Offers arguably best protection </td>
           <td> ● Time-consuming <br>
                ● Requires lots of storage space </td>
+          <td> ● --truncate production table-- <br>
+               ● --insert target table-- </td>
         </tr>
         <tr>
           <td> Incremental </td>
+          <td> ● 為了提高備份速度並減少執行完整備份所需的存儲空間，僅備份自上次備份以來已更改的數據 </td>
           <td> ● Less time and storage space than full backup </td>
           <td> ● Time-consuming to restore <br>
                ● Need all the backups in backup chain to restore </td>
+          <td> ● --create temp table and insert table-- <br>
+               ● --clean source data-- <br>
+               ● --create temp table and insert table-- <br>
+               ● --insert temp table-- <br>
+               ● --create production table backup-- <br>
+               ● --insert all production data into production backup table-- <br>
+               ● --truncate production table-- <br>
+               ● --insert target table-- <br>
+               ● --drop temp table-- </td>
         </tr>
         <tr>
-          <td> Differential </td>
+          <td> Differential (差異備份) </td>
+          <td> ● 自上次完整備份以來更改的所有數據 </td>
           <td> ● Shorter restore time than incremental </td>
           <td> ● Can grow to much bigger size than incremental </td>
+          <td>  </td>
         </tr>
         <tr>
-          <td> Synthetic full </td>
+          <td> Synthetic full (合成完整備份) </td>
+          <td>  </td>
           <td> ● Reduced restore time <br>
                ● Less bandwidth usage </td>
           <td> ● Newer, so not as well-known </td>
+          <td>  </td>
         </tr>
         <tr>
-          <td> Incremental-forever </td>
+          <td> Incremental-forever (永久增量備份) </td>
+          <td>  </td>
           <td> ● Availability of data <br>
                ● Automated restoration process </td>
           <td> ● Newer, so not as well-known <br>
                ● Need all the backups in backup chain to restore </td>
+          <td>  </td>
         </tr>
 </table>        
 <br>
