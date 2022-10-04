@@ -507,3 +507,4 @@
 * [Transact-SQL](https://docs.microsoft.com/zh-tw/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver15)
 * [認識 decimal 和 numeric](http://sharedderrick.blogspot.com/2011/08/decimal-numeric.html)
 * [Comparing backup types](https://www.techtarget.com/searchdatabackup/tip/Data-backup-types-explained-Full-incremental-differential-and-incremental-forever-backup)
+* [資料庫 - 介紹與比較](https://ithelp.ithome.com.tw/articles/10206222)
