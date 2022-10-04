@@ -1,5 +1,10 @@
 # DataBase
 
+## 名詞解釋
+* query：指的是對資料庫作查詢時的語句
+* transaction：交易功能，有些流程會一次綁定多個 query ，而 transaction 就是設定說，一定要每個 query 都正確才會全部 query 被真正執行，如果有任何錯誤，就全部 query 執行結果都捨棄
+* rollback：取消這次所有的 SQL 查詢更新結果
+<br>
 
 
 ## 資料庫系統 (Database System)
@@ -49,26 +54,75 @@
   * 分散式架構
     * 利用數台資料庫伺服器來分別處理使用者的連線
     * 使用者透過網路存取資料, 這些資料可能分別來自不同的主機, 如此分擔了一台主機的工作, 執行起來效能會更佳
+* 常見資料庫系統
+  <table border="1" width="30%">
+    <tr>
+        <th width="5%">資料庫系統</a>
+        <th width="10%">優點</a>
+        <th width="10%">缺點</a>
+        <th width="5%">軟體介面</a>
+    </tr>
+    <tr>
+        <td> MySQL </td>
+        <td> 1.開放原始碼，更新快速 <br>
+             2.相容於各個不同的程式語言、作業系統 <br>
+             3.具有『多執行緒』，能充分利用資源運算 <br>
+             4.社群活躍，資源眾多 </td>
+        <td> 1.性能較差，適合中小型應用程式，但在 8.0 更新後，會相較舊版提升 1 倍以上的效能 <br>
+             2.安全機制相較其他資料庫是較薄弱的 </td>
+        <td> MySQL Workbench 或 PHPmyAdmin </td>
+    </tr>
+    <tr>
+        <td> PostgreSQL </td>
+        <td> 1.更加開放，貼近社群 <br>
+             2.商業應用導向，擁有更嚴格的測試驗證和設計機制 <br>
+             3.Store Procedure 和 View 功能強化 <br>
+             4.地理結構資料類型：提供專屬的資料類型、相關的資料庫函式 </td>
+        <td> 1.結構龐大：對於較小型的伺服器是個負擔 <br>
+             2.複雜的查詢會導致效能低落：主要是因為 PostgreSQL 軟體本身結構的緣故 </td>
+        <td> pgadmin 或 DBeaver </td>
+    </tr>
+    <tr>
+        <td> Microsoft SQL Server </td>
+        <td> 1.工具整合性：微軟生態系 <br>
+             2.使用的學習曲線低：不需要一些繁瑣的設定 <br>
+             3.嚴格的交易安全與控制 <br>
+        <td> 1.封閉的使用和開發環境：商用版限定在 Windows 平台上為主 <br>
+             2.較為笨重 </td>
+        <td>  </td>
+    </tr>
+    <tr>
+        <td> Microsoft SQL Server </td>
+        <td> 1.工具整合性：微軟生態系 <br>
+             2.使用的學習曲線低：不需要一些繁瑣的設定 <br>
+             3.嚴格的交易安全與控制 <br>
+        <td> 1.封閉的使用和開發環境：商用版限定在 Windows 平台上為主 <br>
+             2.較為笨重 </td>
+        <td>  </td>
+    </tr>
+  </table>
 <br>
 
 
 ## NoSQL (Not Only SQL)
-* Key-Value資料庫
-  * 特性：是NoSQL資料庫中最大宗的類型，具有水平擴充性、能依需求增加資料庫
-  * 用途：用於儲存 TB 或 PB 等級資料
-  * 產品：Google BigTable、Hadoop HBase、Amazon Dynamo、Cassandra、Hypertable
-* 記憶體資料庫 (In-memory Database)
-  * 特性：利用記憶體建立分散式資料庫，加快讀取資料的速度
-  * 用途：用來快取常用網頁，減少讀取硬碟的次數，不過系統關機後就無法保存
-  * 產品：Memcached、Redis
-* 文件資料庫 (Document Database)
-  * 特性：可儲存結構鬆散或非結構性的資料，很多文件資料庫是商本
-  * 用途：用來儲存網頁資料或各種 XML 格式的文件，也可儲存圖片或影音資料
-  * 產品：CouchDB、MongoDB、Riak
-* 圖學資料庫 (Graph Database)
-  * 特性：資料包括節點 (Node)、關係 (Relation)和屬性 (Property)三種結構，來儲存圖學架構
-  * 用途：運用圖學架構來儲存節點間關係資料架構，例如用樹狀結構來組織從屬關係或網狀結構來儲存朋友關係，地理圖資系統通常也會用圖學資料庫來儲存地圖上每一點和鄰近點的關係，或用圖學資料庫來計算點與點之間最短的距離，也可以用同樣的概念來計算出人與人之間最短的交友距離
-  * 產品：Neo4j、InfoGrid、AllegroGrph
+* 多用於前端
+* 類型
+  * Key-Value資料庫
+    * 特性：是NoSQL資料庫中最大宗的類型，具有水平擴充性、能依需求增加資料庫
+    * 用途：用於儲存 TB 或 PB 等級資料
+    * 產品：Google BigTable、Hadoop HBase、Amazon Dynamo、Cassandra、Hypertable
+  * 記憶體資料庫 (In-memory Database)
+    * 特性：利用記憶體建立分散式資料庫，加快讀取資料的速度
+    * 用途：用來快取常用網頁，減少讀取硬碟的次數，不過系統關機後就無法保存
+    * 產品：Memcached、Redis
+  * 文件資料庫 (Document Database)
+    * 特性：可儲存結構鬆散或非結構性的資料，很多文件資料庫是商本
+    * 用途：用來儲存網頁資料或各種 XML 格式的文件，也可儲存圖片或影音資料
+    * 產品：CouchDB、MongoDB、Riak
+  * 圖學資料庫 (Graph Database)
+    * 特性：資料包括節點 (Node)、關係 (Relation)和屬性 (Property)三種結構，來儲存圖學架構
+    * 用途：運用圖學架構來儲存節點間關係資料架構，例如用樹狀結構來組織從屬關係或網狀結構來儲存朋友關係，地理圖資系統通常也會用圖學資料庫來儲存地圖上每一點和鄰近點的關係，或用圖學資料庫來計算點與點之間最短的距離，也可以用同樣的概念來計算出人與人之間最短的交友距離
+    * 產品：Neo4j、InfoGrid、AllegroGrph
 <br>
 
 
