@@ -115,7 +115,7 @@
   * DML (Data Manipulation Language)：又稱 CRUD (Create/Retrieve/Update/Delete) 功能，意指資料的新增、擷取、修改、刪除 (Select、Insert、Delete、Update) 四個功能
   * DCL (Data Control Language)：由資料庫所提供的保安功能，對於資料庫與資料庫物件的存取原則與權限 (Grant、Deny、Revoke)，都由 DCL 定義之
 * 函式：
-<table border="1" width="40%">
+  <table border="1" width="40%">
     <tr>
         <th width="10%">函式</a>
         <th width="10%">描述</a>
@@ -188,7 +188,7 @@
         <td> DATEDIFF </td>
         <td> 獲得兩個時間的差值 </td>   
     </tr>
-</table>
+  </table>
 <br>
 
 
