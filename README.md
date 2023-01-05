@@ -426,6 +426,15 @@
 <br>
 
 
+## Oracle 
+* delete transaction log：archivelog delete 後該 DB 將無法 Restore 到 archivelog 的對應時間點
+  * 作法
+    * 檢視是否有使用「delete * from Table」的方式清空 table (作為暫存資料的table)，有的話改用「truncate table 方式」
+    * 考慮將 table 改為 nologging table (外加 insert 搭配 append 方式)，可減少因 insert/delete/update 等 DML 而產生的 transaction log 量，參考資料：https://www.cnblogs.com/andy6/p/7484209.html
+
+<br>
+
+
 ## Comparing backup types
 <table border="1" width="45%">
         <tr>
