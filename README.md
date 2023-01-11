@@ -517,3 +517,4 @@
 * [認識 decimal 和 numeric](http://sharedderrick.blogspot.com/2011/08/decimal-numeric.html)
 * [Comparing backup types](https://www.techtarget.com/searchdatabackup/tip/Data-backup-types-explained-Full-incremental-differential-and-incremental-forever-backup)
 * [資料庫 - 介紹與比較](https://ithelp.ithome.com.tw/articles/10206222)
+* [Choosing the Table Storage Model](https://gpdb.docs.pivotal.io/6-5/admin_guide/ddl/ddl-storage.html#topic37)
