@@ -426,12 +426,130 @@
 <br>
 
 
+## GreenPlum
+* 查詢欄位資訊
+  * 參考資料
+    * [【MSSQL、PostgreSQL】列出資料表的欄位與資料型態](https://ryan-tw.blogspot.com/2015/04/postgresql.html)
+    
+  * 語法
+    ```
+    SELECT 
+         D.table_catalog       as schemas_nm
+       , D.table_schema
+       , D.table_name         
+       , D.ordinal_position  
+       , D.column_name       
+       , D.data_type 
+       , D.character_maximum_length
+       , D.character_octet_length
+       , D.numeric_precision
+       , D.numeric_scale
+       , D.is_nullable
+       , D.column_default
+       , B.description
+    FROM information_schema.columns D 
+    LEFT JOIN pg_catalog.pg_description B 
+      ON 1=1  
+     AND D.ordinal_position = B.objsubid
+    WHERE D.table_schema = 'SCHEMA'
+      AND D.column_name = '欄位名'
+    ```
+* 查詢所有 Table name
+  * 參考資料
+    * [Postgres SQL 用 SELECT語法取得Table Schema](https://akuma1.pixnet.net/blog/post/358796858-postgres-sql-%E7%94%A8-select%E8%AA%9E%E6%B3%95%E5%8F%96%E5%BE%97table-schema)
+  * 語法
+    ```
+    SELECT 
+         A.schema
+       , A.name
+       , A.owner
+       , A.type
+       , B.description
+    FROM (
+         SELECT 
+              n.nspname as schema
+            , c.relname as name
+            , CASE c.relkind WHEN 'r' THEN 'table' 
+                             WHEN 'v' THEN 'view' 
+                             WHEN 'm' THEN 'materialized view' 
+                             WHEN 'i' THEN 'index' 
+                             WHEN 'S' THEN 'sequence' 
+                             WHEN 's' THEN 'special' 
+                             WHEN 'f' THEN 'foreign table' 
+              END as type
+            , pg_catalog.pg_get_userbyid(c.relowner) as owner
+            , relfilenode
+         FROM pg_catalog.pg_class c
+         LEFT JOIN pg_catalog.pg_namespace n 
+           ON n.oid = c.relnamespace
+         WHERE
+               c.relkind IN ('r','s','') 
+           AND n.nspname !~ '^pg_toast' 
+           AND n.nspname ~ '^(public)$'
+         ORDER BY 1,2
+     ) A 
+     LEFT JOIN pg_catalog.pg_description B 
+       ON A.relfilenode = B.objoid 
+      AND B.objsubid = 0
+    ```
+    
+    ```
+    select 
+         b.nspname
+       , a.relname as Tablename
+       , case c.columnstore
+              when 'f' then 'Row Orientation'
+              when 't' then 'Column Orientation'
+         end as TableStorageType
+       , case COALESCE(c.compresstype,'')
+              when '' then 'No Compression'
+              else c.compresstype
+         end as CompressionType
+       , compresslevel   
+    from pg_class a
+         , pg_namespace b
+         , pg_appendonly c
+    where b.oid = a.relnamespace 
+      and a.oid = c.relid
+    ```
+<br>
+
+
 ## Oracle 
 * NBU 來不及備份，發生 delete transaction log 的情況
   * 影響：archivelog delete 後該 DB 將無法 Restore 到 archivelog 的對應時間點，作法
     * 檢視是否有使用「delete * from Table」的方式清空 table (作為暫存資料的table)，有的話改用「truncate table 方式」
     * 考慮將 table 改為 nologging table (外加 insert 搭配 append 方式)，可減少因 insert/delete/update 等 DML 而產生的 transaction log 量，參考資料：https://www.cnblogs.com/andy6/p/7484209.html
-
+* 查詢欄位資訊
+  * 參考網頁
+    * [Oracle查詢資料表結構/欄位/型別/大小](https://www.796t.com/content/1547245448.html)
+  * 語法
+    ```
+    SELECT 
+         A.OWNER as Owner
+       , A.TABLE_NAME as 表格名稱
+       , A.COLUMN_ID as 欄位代碼
+       , A.COLUMN_NAME as 欄位名
+       , A.DATA_TYPE as 資料型別
+       , A.DATA_LENGTH as 長度
+       , A.DATA_PRECISION as 整數位
+       , A.DATA_SCALE as 小數位
+       , A.NULLABLE as 允許空值
+       , A.DATA_DEFAULT as 預設值
+       , B.COMMENTS as 備註  
+    FROM ALL_TAB_COLUMNS A
+    JOIN ALL_TABLES T 
+      ON A.OWNER = T.OWNER 
+     AND A.TABLE_NAME = T.TABLE_NAME
+    LEFT JOIN ALL_COL_COMMENTS B
+      ON A.OWNER = B.Owner
+     AND A.TABLE_NAME = B.TABLE_NAME
+     AND A.COLUMN_NAME = B.COLUMN_NAME 
+    WHERE 1=1
+      AND A.OWNER = 'SCHEMA'
+      AND A.COLUMN_NAME = upper('欄位名')
+    ORDER BY A.TABLE_NAME, A.COLUMN_ID
+    ```
 <br>
 
 
