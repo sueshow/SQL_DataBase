@@ -457,6 +457,7 @@
 * 查詢所有 Table name
   * 參考資料
     * [Postgres SQL 用 SELECT語法取得Table Schema](https://akuma1.pixnet.net/blog/post/358796858-postgres-sql-%E7%94%A8-select%E8%AA%9E%E6%B3%95%E5%8F%96%E5%BE%97table-schema)
+    * [Choosing the Table Storage Model](https://gpdb.docs.pivotal.io/6-5/admin_guide/ddl/ddl-storage.html#topic37)
   * 語法
     ```
     SELECT 
@@ -635,4 +636,3 @@
 * [認識 decimal 和 numeric](http://sharedderrick.blogspot.com/2011/08/decimal-numeric.html)
 * [Comparing backup types](https://www.techtarget.com/searchdatabackup/tip/Data-backup-types-explained-Full-incremental-differential-and-incremental-forever-backup)
 * [資料庫 - 介紹與比較](https://ithelp.ithome.com.tw/articles/10206222)
-* [Choosing the Table Storage Model](https://gpdb.docs.pivotal.io/6-5/admin_guide/ddl/ddl-storage.html#topic37)
