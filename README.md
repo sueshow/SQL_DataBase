@@ -154,6 +154,26 @@
   * Standby Master：提供高可用性，當 master host出現故障，可以接管 master  host的工作
   * Interconnect：是GreenPlum的網路層，負責每個節點之間的傳遞
   * Segment node：業務資料的儲存和存取；負責數據存取與計算，接收 master 分發下来的查詢計畫，執行完成後回傳資料給 master node
+* 功能
+  * 儲存海量資料：Greenplum 採用分布式儲存數據在多個節點伺服器上，利用分布式並行計算框架，支持橫向擴展來提高整體的計算能力和存儲容量
+  * 數據分析平台：Greenplum 內有 MADlib In-database 分析功能，可以並發對大規模的數據進行模型訓練或者統計分析計算，通過擴充 SQL 的能力，降低了企業應用機器學習技術的門檻，並提供在系統內直接分析數據，解決了資料在不同系統間移動所產生的問題
+* 優點分析
+  * MPP (Massively Parallel Processing) 架構：處理單元之間需要進行的通信比較少較也適合選擇 MPP 系統， MPP 系統可以在決策支持和數據挖掘方面擁有優勢
+  * 成本導向查詢優化器：Greenplum 能夠在大量數據中效率的制定與執行複雜關聯操作的查詢計畫。Greenplum 的優化器會考慮許多因素，例如：資料的位置、是否有索引、欄位資料的基數等等，盡可能在 Segment 上完成任務，降低在不同 Segments 間傳輸的資料量
+  * In-database 分析功能：提供了易用性、本地性，能夠協助企業降低移動數據的安全成本與團隊溝通成本
+  * 可以擴充套件補足功能：Greenplum 提供擴充套件，例如：Kafka 即時資料串流，將外部資料即時匯入 Greenplum、ETL 可以進行日誌的排程
+* 部署
+  * 參考網頁：[Greenplum快速部署安裝教學](https://www.webcomm.com.tw/blog/greenplum-1/)
+### Oracle
+* 系統架構包含以下三個部分
+  * System Global Area (系統共同區，SGA)
+    * 每當 Oracle 系統啟動時，會佔用主機一大塊資料庫專屬的記憶体空間來控制資訊與儲存資料，這塊資料庫專屬的記憶体空間稱為 System Global Area(SGA)。SGA 與系統 Background Process (背景處理單元) 合稱 Oracle Instance(實例)。SGA 主要是由 Shared Pool、Database Buffer Cache 與 Redo Log Buffer 三個主要部份所組成
+  * Process (處理單元)
+    * 分為兩種：User Process 與 Oracle Process 兩種
+      * User Process：當使用者的應用程式欲以 SQL 指令存取資料庫資料時，例如：Pro*C程式、Oracle Tools、SQL*plus、Oracle Form 等等，Oracle 會產生 User Process 去執行這些工作
+      * Oracle Process：Oracle Process 依執行的方式不同可大概分為 Server Process 與 Background Process 兩種
+  * Files (系統檔案)
+    * 實體資料庫結構主要由三種型態的檔案所構成： Redo Log Files、Control Files 與 Data Files 三種
 <br>
 
 ## DataBase 說明
@@ -556,3 +576,4 @@
 * [Comparing backup types](https://www.techtarget.com/searchdatabackup/tip/Data-backup-types-explained-Full-incremental-differential-and-incremental-forever-backup)
 * [資料庫 - 介紹與比較](https://ithelp.ithome.com.tw/articles/10206222)
 * [Greenplum的架構](https://gp-docs-cn.github.io/docs/admin_guide/intro/arch_overview.html)
+* [Oracle 系統架構](http://faculty.stust.edu.tw/~jehuang/oracle/ch8/8-1.htm)
