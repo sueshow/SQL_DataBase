@@ -1,11 +1,9 @@
 # DataBase
-
 ## 名詞解釋
 * query：指的是對資料庫作查詢時的語句
 * transaction：交易功能，有些流程會一次綁定多個 query ，而 transaction 就是設定說，一定要每個 query 都正確才會全部 query 被真正執行，如果有任何錯誤，就全部 query 執行結果都捨棄
 * rollback：取消這次所有的 SQL 查詢更新結果
 <br>
-
 
 ## 資料庫系統 (Database System)
 * 資料庫系統分為三個部份：
@@ -103,6 +101,49 @@
   </table>
 <br>
 
+## DataBase 配置
+### MySQL Server
+* 安裝：確認安裝 MySQL Server 與 ODBC 連接器的支援版本
+  * 從 https://dev.mysql.com/downloads/installer/ 下載 MySQL 8 Windows Installer，並執行它
+    * 選擇作業系統
+    * 進入下載頁面：注意這裡有分成 web 版跟一般版，選擇一般版即可，不用註冊也可以。選擇後，便會開始下載
+    * 一直選擇下一項即可，預設的安裝通常都是最輕量化、最沒有額外套件的。唯一重要：一定要把 Root 的密碼設定好
+  * 在設定安裝期間，依序選取【自訂】和【MySQL伺服器】，以及要安裝的【連接器/ODBC】。確定 ODBC 連接器符合已安裝 MySQL Server (x86 或 x64) 的位元
+  * 完成 MySQL Server 的安裝
+* 配置
+  * 在文字編輯器中開啟下列檔案：C:\ProgramData\MySQL\MySQL Server 8.0\my.ini
+  * 尋找並編輯下列配置，或將它附加至 my.ini 檔案的【mysqld】區段：
+    ```
+    max_allowed_packet=33M
+    ```
+    * 針對 MySQL 8，必須設定下列變數：
+      ```
+      log_bin_trust_function_creators=1
+      --或停用二進位記錄
+      log_bin=0
+      ```
+    * 若為 MySQL 5.6.20 與 5.6.21 (可以使用 mysql --version 判斷 MySQL 版本)：
+      * innodb_log_file_size 必須設定為至少 200 MB，但不超過 3000 MB
+        ```
+        innodb_log_file_size=200M
+        ```
+    * 若為 MySQL 5.6.22 和支援的更新版本 (包括第 8 版)：
+      * innodb_log_file_size*innodb_log_files_in_group 必須設定至少為 200 MB，其中 innodb_log_files_in_group 的最小值為 2，最大值為 100，且值必須為整數
+        ```
+        innodb_log_file_size=100M
+        innodb_log_files_in_group=2
+        ```
+  * 儲存並關閉 my.ini 檔案
+  * 開啟命令提示字元，然後輸入下列命令，以重新啟動 MySQL 伺服器並套用配置 (處理程序名稱視 MySQL 的版本而定，如 8.0 = mysql80 等)
+    ```
+    net stop mysql80
+    net start mysql80
+    ```
+  * 在命令提示字元中輸入下列命令，檢查 MySQL 伺服器是否正在執行中：
+    ```
+    sc query mysql80
+    ```
+<br>
 
 ## DataBase 說明
 * 中文字
@@ -237,51 +278,6 @@
           <td> unicode UFT-8 </td>
         </tr>
       </table>
-<br>
-
-
-## DataBase 配置
-### MySQL Server
-* 安裝：確認安裝 MySQL Server 與 ODBC 連接器的支援版本
-  * 從 https://dev.mysql.com/downloads/installer/ 下載 MySQL 8 Windows Installer，並執行它
-    * 選擇作業系統
-    * 進入下載頁面：注意這裡有分成 web 版跟一般版，選擇一般版即可，不用註冊也可以。選擇後，便會開始下載
-    * 一直選擇下一項即可，預設的安裝通常都是最輕量化、最沒有額外套件的。唯一重要：一定要把 Root 的密碼設定好
-  * 在設定安裝期間，依序選取【自訂】和【MySQL伺服器】，以及要安裝的【連接器/ODBC】。確定 ODBC 連接器符合已安裝 MySQL Server (x86 或 x64) 的位元
-  * 完成 MySQL Server 的安裝
-* 配置
-  * 在文字編輯器中開啟下列檔案：C:\ProgramData\MySQL\MySQL Server 8.0\my.ini
-  * 尋找並編輯下列配置，或將它附加至 my.ini 檔案的【mysqld】區段：
-    ```
-    max_allowed_packet=33M
-    ```
-    * 針對 MySQL 8，必須設定下列變數：
-      ```
-      log_bin_trust_function_creators=1
-      --或停用二進位記錄
-      log_bin=0
-      ```
-    * 若為 MySQL 5.6.20 與 5.6.21 (可以使用 mysql --version 判斷 MySQL 版本)：
-      * innodb_log_file_size 必須設定為至少 200 MB，但不超過 3000 MB
-        ```
-        innodb_log_file_size=200M
-        ```
-    * 若為 MySQL 5.6.22 和支援的更新版本 (包括第 8 版)：
-      * innodb_log_file_size*innodb_log_files_in_group 必須設定至少為 200 MB，其中 innodb_log_files_in_group 的最小值為 2，最大值為 100，且值必須為整數
-        ```
-        innodb_log_file_size=100M
-        innodb_log_files_in_group=2
-        ```
-  * 儲存並關閉 my.ini 檔案
-  * 開啟命令提示字元，然後輸入下列命令，以重新啟動 MySQL 伺服器並套用配置 (處理程序名稱視 MySQL 的版本而定，如 8.0 = mysql80 等)
-    ```
-    net stop mysql80
-    net start mysql80
-    ```
-  * 在命令提示字元中輸入下列命令，檢查 MySQL 伺服器是否正在執行中：
-    ```
-    sc query mysql80
-    ```
 <br>
 
 
@@ -427,7 +423,6 @@
       and a.oid = c.relid
     ```
 <br>
-
 
 ## Oracle 
 * NBU 來不及備份，發生 delete transaction log 的情況
