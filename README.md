@@ -143,6 +143,17 @@
     ```
     sc query mysql80
     ```
+### Greenplum
+* 是一種大規模並行處理 (MPP：又稱為 shared nothing 架構) 數據庫服務器，其架構特別針對管理大規模分析數據倉庫以及商業智能工作負載而設計
+* Greenplum 數據庫和 PostgreSQL 的主要區別在於：
+  * 在基於 Postgres 查詢規劃器的常規查詢規劃器之外，可以利用 GPORCA 進行查詢規劃
+  * Greenplum 數據庫可以使用追加優化的存儲
+  * Greenplum 數據庫可以選用列式存儲，數據在邏輯上還是組織成一個表，但其中的行和列在物理上是存儲在一種面向列的格式中，而不是存儲成行。列式存儲只能和追加優化表一起使用。列式存儲是可壓縮的。當用戶只需要返回感興趣的列時，列式存儲可以提供更好的性能。所有的壓縮算法都可以用在行式或者列式存儲的表上，但是行程編碼 (RLE) 壓縮只能用於列式存儲的表。Greenplum數據庫在所有使用列式存儲的追加優化表上都提供了壓縮
+* 架構
+  * Master Host：建立與客戶端的連線和管理，儲存資料字典；SQL 的解析並形成查詢計劃
+  * Standby Master：提供高可用性，當 master host出現故障，可以接管 master  host的工作
+  * Interconnect：是GreenPlum的網路層，負責每個節點之間的傳遞
+  * Segment node：業務資料的儲存和存取；負責數據存取與計算，接收 master 分發下来的查詢計畫，執行完成後回傳資料給 master node
 <br>
 
 ## DataBase 說明
@@ -544,3 +555,4 @@
 * [認識 decimal 和 numeric](http://sharedderrick.blogspot.com/2011/08/decimal-numeric.html)
 * [Comparing backup types](https://www.techtarget.com/searchdatabackup/tip/Data-backup-types-explained-Full-incremental-differential-and-incremental-forever-backup)
 * [資料庫 - 介紹與比較](https://ithelp.ithome.com.tw/articles/10206222)
+* [Greenplum的架構](https://gp-docs-cn.github.io/docs/admin_guide/intro/arch_overview.html)
